@@ -1,0 +1,12 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+.titulo-cadastro-cliente{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.conteudo-cadastro-cliente{
+    max-width: 520px;
+}

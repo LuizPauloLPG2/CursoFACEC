@@ -11,6 +11,9 @@
             <div class="form-group col-md-2">
                 <button type="submit" class="btn btn-success">PESQUISAR</button>
             </div>
+            <div class="form-group col-md-6 text-right">
+                <a class="btn btn-primary" href="cadastrar.php">CADASTRAR NOVO</a>
+            </div>
         </div>
     </form>
     <?php
@@ -53,7 +56,6 @@
             <?php } ?>
         </tbody>
     </table>
-
 </div>
 
 <?php include_once("../../include/footer.php"); ?>
