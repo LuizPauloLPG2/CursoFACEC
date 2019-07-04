@@ -10,3 +10,6 @@ body{
 .conteudo-cadastro-cliente{
     max-width: 520px;
 }
+.label-status-cliente{
+    width: 80px;
+}

@@ -1,10 +1,16 @@
 <?php include_once("../../include/header.php"); ?>
 <div class="container jumbotron conteudo-cadastro-cliente mt-2">
-<div> <a class="btn btn-primary" href="../cliente/">LISTAR CLIENTES</a> </div>
+    <a class="btn btn-primary" href="../cliente/">LISTAR CLIENTES</a> 
     <hr>
     <div class="titulo-cadastro-cliente">
         Cadastro de cliente!
     </div>
+    <?php if(isset($_GET['erro'])){ ?>
+        <div class="alert alert-danger" role="alert"><?php echo $_GET['msg']; ?></div>
+    <?php } ?>
+    <?php if(isset($_GET['success'])){ ?>
+        <div class="alert alert-success" role="alert"> CADASTRADO COM SUCESSO! </div>
+    <?php } ?>
     <div class="formulario-cadastro-cliente">
         <form action="../../model/cliente/post.php" method="post">
             <div class="form-row">

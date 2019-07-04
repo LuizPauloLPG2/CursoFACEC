@@ -14,8 +14,8 @@ $cliente = new ClienteController();
 $cliente->post($dadosCliente);
 
 if($cliente->lastError()){
-   header("location: ../../view/cliente/cadastrar.php?msg=error");
+   header("location: ../../view/cliente/cadastrar.php?erro=" . $cliente->lastError()['erro'] . "&msg=" . $cliente->lastError()['msg']);
 }else{
-   header("location: ../../view/cliente/cadastrar.php?msg=success");
+   header("location: ../../view/cliente/cadastrar.php?success=ok");
 }
 

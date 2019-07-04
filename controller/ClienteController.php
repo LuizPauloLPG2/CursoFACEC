@@ -1,8 +1,9 @@
 <?php
 
 require_once("../../config/conexao.php");
+require_once("../../config/config.php");
 
-class ClienteController{
+class ClienteController {
 
     protected $lastError = null;
 
@@ -13,10 +14,57 @@ class ClienteController{
     function post($dadosCliente){
 
         $this->lastError = null;
-       
-        // if ($dadosCliente['biografia'] === "") { }
+
         if(empty($dadosCliente['biografia'])){
             $dadosCliente['biografia'] = null;
+        }
+
+        if(empty($dadosCliente['nome_cliente'])){
+            $this->lastError = array(
+                'erro' => "nome_cliente_obrigatorio",
+                'msg' => "NOME OBRIGATÓRIO!"
+            );
+            return false;
+        }
+
+        if(empty($dadosCliente['email_cliente'])){
+            $this->lastError = array(
+                'erro' => "email_cliente_obrigatorio",
+                'msg' => "EMAIL OBRIGATÓRIO!"
+            );
+            return false;
+        }
+
+        if(empty($dadosCliente['status'])){
+            $this->lastError = array(
+                'erro' => "status_obrigatorio",
+                'msg' => "STATUS OBRIGATÓRIO!"
+            );
+            return false;
+        }
+
+        if(empty($dadosCliente['cpf'])){
+            $this->lastError = array(
+                'erro' => "cpf_obrigatorio",
+                'msg' => "CPF OBRIGATÓRIO!"
+            );
+            return false;
+        }
+
+        if(Config::existeCpfCadastrado($dadosCliente['cpf']) > 0){
+            $this->lastError = array(
+                'erro' => "cpf_ja_existe",
+                'msg' => "CPF JÁ CADASTRADO!"
+            );
+            return false;
+        }
+        
+        if(Config::existeEmailCadastrado($dadosCliente['email_cliente']) > 0){
+            $this->lastError = array(
+                'erro' => "email_ja_existe",
+                'msg' => "EMAIL JÁ CADASTRADO!"
+            );
+            return false;
         }
 
         $sql = ("INSERT INTO table_cliente 
