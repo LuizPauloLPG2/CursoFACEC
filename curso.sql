@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Jul-2019 às 23:53
+-- Tempo de geração: 05-Jul-2019 às 14:56
 -- Versão do servidor: 10.3.16-MariaDB
 -- versão do PHP: 7.3.6
 
@@ -38,14 +38,6 @@ CREATE TABLE `table_cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `table_cliente`
---
-
-INSERT INTO `table_cliente` (`id_cliente`, `nome_cliente`, `email_cliente`, `biografia`, `status`, `cpf`) VALUES
-(1, 'Luiz', 'luiz@gmail.com', NULL, 'A', '182.576.750-59'),
-(2, 'Paulo', 'paulo@gmail.com', NULL, 'I', '182.576.750-59');
-
---
 -- Índices para tabelas despejadas
 --
 
@@ -63,7 +55,7 @@ ALTER TABLE `table_cliente`
 -- AUTO_INCREMENT de tabela `table_cliente`
 --
 ALTER TABLE `table_cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
