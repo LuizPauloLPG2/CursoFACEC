@@ -1,14 +1,19 @@
 body{
     font-family: 'Times New Roman', Times, serif;
 }
+#nav-top ul li a{
+    margin: 2px;
+}
 .titulo-cadastro-cliente{
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
 }
-
 .conteudo-cadastro-cliente{
     max-width: 520px;
+}
+.conteudo-cadastro-cliente .alert {
+    text-align: center;
 }
 .label-status-cliente{
     width: 80px;

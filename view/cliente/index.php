@@ -1,34 +1,19 @@
 <?php include_once("../../include/header.php"); ?>
-<div class="container mt-5">
-    <!-- get URL -->
-    <!-- post PRIVADO -->
-    
-    <form method="get">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <input type="text" name="search" class="form-control" placeholder="PESQUISAR...">
-            </div>
-            <div class="form-group col-md-2">
-                <button type="submit" class="btn btn-success">PESQUISAR</button>
-            </div>
-            <div class="form-group col-md-6 text-right">
-                <a class="btn btn-primary" href="cadastrar.php">CADASTRAR NOVO</a>
-            </div>
-        </div>
-    </form>
-    <?php
-    $sql = ("SELECT * FROM table_cliente WHERE (1 = 1) ");
-    
-    if (isset($_GET['search'])) {
-        $sql .= ("AND nome_cliente LIKE '%" . $_GET['search'] . "%'");
-    }
-    
-    $exec = Db::connection()->prepare($sql);
-    $exec->execute();
-    $clientes = $exec->fetchAll(PDO::FETCH_ASSOC);
-    ?>
+<div class="container">
 
-<table class="table table-sm table-striped table-hover border">
+<?php
+$sql = ("SELECT * FROM table_cliente WHERE (1 = 1) ");
+
+if (isset($_GET['search'])) {
+    $sql .= ("AND nome_cliente LIKE '%" . $_GET['search'] . "%'");
+}
+
+$exec = Db::connection()->prepare($sql);
+$exec->execute();
+$clientes = $exec->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<table class="table table-sm table-striped table-hover border tabela-datatable">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -87,8 +72,12 @@
                     <td class="text-right">
                         <button data-toggle="modal" 
                                 data-target="#detalhes-<?php echo $cliente['id_cliente']; ?>" 
-                                type="button" 
-                                class="btn btn-primary btn-sm">DETALHES</button>  
+                                type="button"
+                                class="btn btn-primary btn-sm">DETALHES</button> 
+
+                        <button type="button" 
+                                data-id="<?php echo $cliente['id_cliente']; ?>"  
+                                class="btn btn-danger btn-sm button_delete_cliente">APAGAR</button> 
                     </td>
                 </tr>
             <?php } ?>

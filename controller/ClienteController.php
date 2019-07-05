@@ -98,9 +98,25 @@ class ClienteController {
         }
 
         return true;
-
     }
 
+    function delete($id_cliente){
 
+        $this->lastError = null;
 
+        $sql = ("DELETE FROM table_cliente 
+                    WHERE 
+                        id_cliente = :id_cliente");
+
+        $exec = Db::connection()->prepare($sql);
+        $exec->bindValue(":id_cliente", $id_cliente, PDO::PARAM_INT);
+
+        $r = $exec->execute();
+
+        if(!$r){
+            $this->lastError = "Erro ao deletar o cliente!";
+            return false;
+        }
+        return true;
+    }
 }
